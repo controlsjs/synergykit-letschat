@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/favicon/favicon-apple-152px-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-apple-152px-precomposed.png" />
+    <meta name="msapplication-TileImage" content="img/favicon/favicon-win8.png" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <title>SynergyKit LetsChat</title>
+
+    <style type="text/css">
+      body { margin:0; overflow:hidden; height:100%; }
+      #ngAppLoading { position:absolute;left:0;top:0;width:100%;height:100%;z-index:100000;background-color: #FFFFFF; }
+      .ngAppLoaded { visibility:hidden;opacity:0;filter:alpha(opacity=0);-webkit-transition:visibility 0s linear 1s,opacity 1s linear;-moz-transition:visibility 0s linear 1s,opacity 1s linear;-ms-transition:visibility 0s linear 1s,opacity 1s linear;-o-transition:visibility 0s linear 1s,opacity 1s linear;transition:visibility 0s linear 1s,opacity 1s linear; }
+      #ngLoadBar { position:absolute;left:50%;top:50%;width:200px;margin-left:-100px;margin-top:100px; }
+      #ngLoadProgress { position:absolute;width:0;height:1px;font-size:1px;line-height:1px;border-top: 1px solid #c0c0c0;-webkit-transition:width 1s linear;-moz-transition:width 1s linear;-ms-transition:width 1s linear;-o-transition:width 1s linear;transition:width 1s linear; }
+      #ngLoadInfo { position:absolute;left:0;top:50%;width:100%;font-family:Arial CE,Helvetica CE,Arial,Helvetica,sans-serif;font-size:12px;margin-top:30px;text-align:center; color: #c0c0c0; }
+      #ngLoadName { padding-bottom:5px;font-weight:bold; }
+      #ngLoadCopy { font-size:10px; }
+      #ngLoadImg { position:absolute;left:50%;top:50%; }      
+    </style>
+
+    <script type="text/javascript">
+
+      // WARNING!!!
+      // Set ngDEBUG=0 if application is in production
+
+      var ngDEBUG = 1; // 0 = DISABLED, 1 = ENABLED
+      var ngAppScriptsVer = 1;
+
+      var ngControlsURL='controls.js'+(ngDEBUG ? '/debug/' : '/release/');
+      var ngLibsURL=ngControlsURL+'libs/';
+
+      var ngAppFiles = [
+        // Controls.js files:
+        ngControlsURL+'controls.js',
+
+        // Use WinEight Skin:
+        ngLibsURL+'ng_wineight/wineight.css',
+        ngLibsURL+'ng_wineight/wineight.js',
+
+        // SynergyKit
+        ngLibsURL+'lib_synergykit/synergykit.js',
+
+        // Your project files:
+        'js/appcontrols.js',
+        'js/main.js'
+      ];
+
+      // Multi-device configuration and device-dependent files:      
+      var ngDevices = {
+        'desktop':         {},
+        'mobile':          {'MaxWidth':735}
+      };
+
+      function ngStartParams()
+      {
+        // Start parameters
+        this.Version = '1.0';
+      }
+
+    </script>
+
+    <script type="text/javascript" src="controls.js/release/loader-bar.js"></script>
+    
+  </head>
+  <body scroll="no" onload="ngLoadApplication('ngApp')">  
+
+    <div id="ngAppLoading" class="ngAppLoading">
+      <div id="ngLoadInfo"><div id="ngLoadName">SynergyKit LetsChat</div><div id="ngLoadCopy">Copyright © 2015 Position s.r.o.</div></div>
+      <img id="ngLoadImg" src="controls.js/release/libs/ng_controls/images/hourglass.gif" alt="..." style="margin-left:-16px;margin-top:-16px;" />
+      <div id="ngLoadBar"><div id="ngLoadProgress"></div></div>
+    </div>    
+
+    <div id="ngApp" class="ngApplication"></div>
+  </body>
+</html>
