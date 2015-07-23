@@ -127,26 +127,33 @@ function RegisterUser() {
   });    
 }
 
-function SendMessage(msg)
+function SendMessage(msg,to)
 {
   if(typeof msg === 'string') msg={message:msg};
   msg.user = AppForm.UserEmail.GetText();
   msg.ts =  new Date();
+  if(typeof to !== 'undefined') msg.to=to;
   AppForm.Channel.Speak(msg);  
 }
 
-function SendStatus(status)
+function SendStatus(status,to)
 {
-  SendMessage({status:status});
+  SendMessage({status:status},to);
 }
 
 function ProcessMessage(msg) {
-  msg.IsMine=(msg.user===AppForm.UserEmail.GetText());
+  if(typeof msg!=='object') return;
+  var me=AppForm.UserEmail.GetText();
+  if(typeof msg.to!=='undefined') {
+    if((ng_typeArray(msg.to))&&(!ng_inArray(me,msg.to))) return;
+    if((ng_typeString(msg.to))&&(me!==msg.to)) return;
+  }
+  msg.IsMine=(msg.user===me);
   msg.ReceivedTS=new Date;
   msg.CreatedTS=msg.ReceivedTS;
   if((msg.IsMine)&&(typeof msg.status !== 'undefined')) return; // Ignore my status messages  
-  if(msg.status===chatLoggedIn) SendStatus(chatIamHere);
-  if(msg.status===chatUsers)  { SendStatus(chatIamHere); return; }
+  if(msg.status===chatLoggedIn) SendStatus(chatIamHere,msg.user);
+  if(msg.status===chatUsers)  { SendStatus(chatIamHere,msg.user); return; }
   ShowMessage(msg);
 }
 
